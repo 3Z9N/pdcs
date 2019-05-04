@@ -8,7 +8,6 @@ MainWin::MainWin(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::MainWin)
 {
-    pd_debug_info = true;
     ui->setupUi(this);
     ui->StatusLabel->setText("Disonnected");
     ConnDialog = new ConnectDialog(this);

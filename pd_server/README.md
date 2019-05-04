@@ -55,21 +55,27 @@ LAST|timestamp|priority|info   Last event
 </pre>
 
 
+Command Line Arguments
+----------------------
+<pre>
+  -d, --debug        -  Enables debug info (stdout)
+  -h, --help         -  Print help
+  -p, --port <port>  -  TCP Port (default: 11111)
+</pre>
+
+
 Building
 --------
-To build a pd_server run:
-./build_script
+To build a pd_server run:   ./build_script
 
 
 Installing
 ----------
 The program can be installed only after the project has been built.
 
-To install run as root:
-make install
+To install run as root:   make install
 
-To uninstall run as root:
-make uninstall
+To uninstall run as root:   make uninstall
 
 
 Author

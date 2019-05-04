@@ -28,8 +28,8 @@ QMAKE_CXXFLAGS += -O2
 unix:INCLUDEPATH += "../pd_client"
 win32:INCLUDEPATH += "../pd_client"
 
-unix:LIBS += -L../pd_client/build/debug -lpd_client -lboost_filesystem
-win32:LIBS += -L../pd_client/build/debug -lpd_client -lboost_filesystem-mt
+unix:LIBS += -L../pd_client/build/debug -lpd_client -lboost_filesystem -lboost_program_options
+win32:LIBS += -L../pd_client/build/debug -lpd_client -lboost_filesystem-mt -lboost_program_options-mt
 
 # Build config
 CONFIG += debug

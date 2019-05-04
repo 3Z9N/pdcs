@@ -2,6 +2,8 @@ build/
 html/
 latex/
 Makefile
+moc_*
+ui_*
 *.o
 *.db
 *.pdb
