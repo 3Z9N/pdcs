@@ -60,7 +60,7 @@ Command Line Arguments
 <pre>
   -d, --debug        -  Enables debug info (stdout)
   -h, --help         -  Print help
-  -p, --port <port>  -  TCP Port (default: 11111)
+  -p, --port [num]   -  TCP Port (default: 11111)
 </pre>
 
 
