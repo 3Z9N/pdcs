@@ -1,0 +1,23 @@
+#!/bin/sh
+BASEDIR=`pwd`
+DIRS="pd_server pd_client qpd_client"
+
+if [ "${UID}" -ne 0 ]
+then
+    echo "You are not root user"
+    echo "Run as root or try 'sudo ./install'"
+    exit 0
+fi
+
+for dir in $DIRS
+do
+    echo "-------------------"
+    echo "Install $dir"
+    echo "-------------------"
+    cd $dir
+    make install
+    cd $BASEDIR
+done
+
+echo "-------------------"
+echo "done"

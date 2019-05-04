@@ -1,0 +1,21 @@
+#!/bin/sh
+
+if [ "${UID}" -ne 0 ]
+then
+    echo "You are not root user"
+    echo "Run as root or try 'sudo ./uninstall'"
+    exit 0
+fi
+
+echo "Uninstalling pd_server..."
+rm -R -f /opt/pd_server
+
+echo "Uninstalling pd_client..."
+rm -f /usr/local/lib/libpd_client*
+rm -R -f /usr/local/include/pd_client
+
+echo "Uninstalling qpd_client..."
+rm -R -f /usr/local/bin/qpd_client
+
+
+echo "done"

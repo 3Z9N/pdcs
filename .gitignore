@@ -1,0 +1,9 @@
+build/
+html/
+latex/
+Makefile
+*.o
+*.db
+*.pdb
+*.pro.user
+.qmake.stash

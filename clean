@@ -1,0 +1,16 @@
+#!/bin/sh
+BASEDIR=`pwd`
+DIRS="pd_server pd_server/test pd_client pd_client/test qpd_client"
+
+for dir in $DIRS
+do
+    echo "-------------------"
+    echo "Clean $dir"
+    echo "-------------------"
+    cd $dir
+    make clean
+    cd $BASEDIR
+done
+
+echo "-------------------"
+echo "done"

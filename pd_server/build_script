@@ -1,0 +1,8 @@
+#!/bin/sh
+
+echo "Building..."
+qmake
+make
+
+echo "Creating documentation..."
+doxygen
