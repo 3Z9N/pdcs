@@ -29,8 +29,8 @@ The Qt library was used to build the GUI of the program.
 
 Data exchange protocol between client and server
 ------------------------------------------------
-Data sent to the server:
 <pre>
+Data sent to the server:
 -------------------------------------------------------------
 Data format                    Description
 -------------------------------------------------------------
@@ -38,10 +38,8 @@ LOGIN|user_name|password       Login
 NEW|priority|info    (*)       New event
 ALL                            Download all events
 LAST                           Download last event
-</pre>
 
 Data sent to the client:
-<pre>
 -------------------------------------------------------------
 Data format                    Description
 -------------------------------------------------------------
