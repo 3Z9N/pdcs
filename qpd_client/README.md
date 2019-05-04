@@ -7,7 +7,7 @@ The Qt library was used to build the GUI of the program.
 
 Building
 --------
-To build a pd_client library run:
+To build a qpd_client run:
 ./build_script
 
 
