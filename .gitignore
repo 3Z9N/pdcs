@@ -1,6 +1,8 @@
 build/
 html/
 latex/
+pd_client/test/test
+pd_server/test/test
 Makefile
 moc_*
 ui_*

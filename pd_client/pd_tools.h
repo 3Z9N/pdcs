@@ -23,7 +23,7 @@
 /// \brief Special variable for debugging with DBG macro
 /// true - enable debug info
 /// false - disable debug info (default)
-extern bool pd_debug_info;
+extern bool PD_DECL_EXPORT pd_debug_info;
 
 /// \brief Special macro for debugging
 #define DBG(fmt, ...) \
