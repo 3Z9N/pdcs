@@ -1,4 +1,4 @@
-pd_server - "Packet Data Server"
+pd_server - "Packet Data" Server
 ================================
 pd_server is a server for storing data in a database (in this case sqlite), and for sending them to clients.
 As a database, sqlite was used as a simple, single-file and good database for gathering information. In addition, sqlite does not require a database server.
@@ -8,11 +8,12 @@ Configuration
 -------------
 The default server TCP port is 11111, but can be changed by setting it in the command line argument.
 The database consists of only one 'events' table.
+<pre>
 This table has three fields:
     timestamp - INTEGER PRIMARY KEY
     priority - INTEGER
     info - TEXT
-
+</pre>
 The database is created during the first query in the 'evens.db' file.
 The file storing user data - 'secret.pdb', if it is missing, is created at the server startup with the default user 'admin' and the password 'admin'.
 
@@ -75,11 +76,13 @@ To build a pd_server run:   ./build_script
 Installing
 ----------
 The program can be installed only after the project has been built.
+<pre>
+To install run as root:
+make install
 
-To install run as root:   make install
-
-To uninstall run as root:   make uninstall
-
+To uninstall run as root:
+make uninstall
+<pre>
 
 Author
 ------

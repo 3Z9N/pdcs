@@ -17,8 +17,10 @@ Command Line Arguments
 
 Building
 --------
-To build a qpd_client run:   ./build_script
-
+<pre>
+To build a qpd_client run:
+./build_script
+</pre>
 
 Installing
 ----------

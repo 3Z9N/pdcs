@@ -61,20 +61,26 @@ The data frame consists of two blocks:
 <pre>
 1 - header - size of transmitted data in text form and takes 4 bytes.
 2 - body - transmitted data that is encrypted using the AES 128 algorithm - maximum size: 512 bytes.
-</pre>
-For example:
-<pre>  '  15xxxxxxxxxxxxxxx' </pre>
 
+For example:
+'  15xxxxxxxxxxxxxxx'
+</pre>
 
 Building
 --------
-To build all projects, run:   ./build
+<pre>
+To build all projects, run:
+./build
 
-To clean all projects, run:   ./clean
+To clean all projects, run:
+./clean
 
-To install all projects, run as root:   ./install
+To install all projects, run as root:
+./install
 
-To uninstall all projects, run as root:   ./uninstall
+To uninstall all projects, run as root:
+./uninstall
+</pre>
 
 Note: 
 Installation can be done only after building the project.
