@@ -39,7 +39,6 @@ int main(int argc, char *argv[])
     }
 
 
-
     // Run application
     QApplication a(argc, argv);
     MainWin w;

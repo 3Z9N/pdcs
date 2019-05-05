@@ -43,7 +43,7 @@ public:
     void deliver(const pd_message& msg);
 
 private:
-	std::set<pd_user_ptr> users_;	///< \brief User collection.
+    std::set<pd_user_ptr> users;	///< \brief User collection.
 };
 
 //-------------------------------------------------------------------

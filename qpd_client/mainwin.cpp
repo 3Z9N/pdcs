@@ -62,7 +62,6 @@ void MainWin::onMessage(std::string msg, std::vector<std::string> args)
 // BConnect click slot
 void MainWin::BConnectClick()
 {
-    DBG("BConnect click.");
     // disconnect if client connected and cleanup pdcli
     if(pdcli.connected()) {
         pdcli.close();
@@ -77,7 +76,7 @@ void MainWin::BConnectClick()
 
     // execute connection dialog
     int res = ConnDialog->exec();
-    if(res == 0) return; // dialog cancelled
+    if(res == QDialog::Rejected) return; // dialog rejected
 
     // create connection
     pdcli.set_on_message([this](const std::string& msg, const std::vector<std::string>& args)
@@ -88,7 +87,7 @@ void MainWin::BConnectClick()
     std::this_thread::sleep_for(std::chrono::milliseconds(200)); // wait for client running
 
     if(!pdcli.connected()) { // not connected - close pdcli
-        DBG("pdcli not connected - close_pdcli->");
+        DBG("client not connected - close");
         pdcli.close();
         QMessageBox::warning(this, "Connection", "Can't connect to " +
                              ConnDialog->address() + ":" + ConnDialog->port() +
@@ -97,14 +96,15 @@ void MainWin::BConnectClick()
         ui->StatusLabel->setText("Disconnected");
         return;
     }
+    DBG("client connected...");
 
     // login to server
     pdcli.login(ConnDialog->user_name().toStdString(), ConnDialog->password().toStdString());
     // wait for the server response
     std::this_thread::sleep_for(std::chrono::milliseconds(200));
     std::string s = last_args.size() ? last_args[0] : "";
-    if(!pdcli.connected() || s == "REJECTED") {   // login failed - server disconnect
-        DBG("disable connection");
+    if(!pdcli.connected() || s != "ACCEPTED") {   // server close connection - login rejected
+        DBG("connection rejected");
         pdcli.close();
         ui->StatusLabel->setText(s.c_str());
         QMessageBox::warning(this, "Connection",
@@ -112,6 +112,7 @@ void MainWin::BConnectClick()
                              QMessageBox::Ok);
         return;
     }
+    DBG("login accepted");
     ui->BConnect->setText("Disconnect");
     ui->StatusLabel->setText("Connected to: "+ConnDialog->address()+":"+ConnDialog->port());
     ui->BNew->setEnabled(true);
@@ -122,10 +123,9 @@ void MainWin::BConnectClick()
 // BNew click slot
 void MainWin::BNewClick()
 {
-    DBG("BConnect click.");
     // execute event dialog
     int res = EvtDialog->exec();
-    if(res == 0) return; // dialog cancelled
+    if(res == QDialog::Rejected) return; // dialog rejected
     if(EvtDialog->info().isEmpty()) {
         QMessageBox::warning(this, "New",
                              "The information is empty!\nYou must write something.",
@@ -138,7 +138,6 @@ void MainWin::BNewClick()
 // BAll click slot
 void MainWin::BAllClick()
 {
-    DBG("BAll click.");
     model.clear();
     pdcli.get_all_events();
 }
@@ -146,7 +145,6 @@ void MainWin::BAllClick()
 // BLast click slot
 void MainWin::BLastClick()
 {
-    DBG("BLast click.");
     model.clear();
     pdcli.get_last_event();
 }
@@ -154,6 +152,5 @@ void MainWin::BLastClick()
 // BExit click slot
 void MainWin::BExitClick()
 {
-    DBG("BExit click.");
     this->close();
 }

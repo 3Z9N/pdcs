@@ -31,17 +31,17 @@ using boost::asio::ip::tcp;
 
 // Adds the user to the session room.
 void pd_room::join(pd_user_ptr user) {
-    users_.insert(user);
+    users.insert(user);
 }
 
 // Removes the user from the session room.
 void pd_room::leave(pd_user_ptr user) {
-    users_.erase(user);
+    users.erase(user);
 }
 
 // Delivers messages to all users.
 void pd_room::deliver(const pd_message& msg) {
-    for (auto user : users_)
+    for (auto user : users)
         user->deliver(msg);
 }
 
@@ -136,7 +136,6 @@ void pd_session::do_read_body() {
 
 // Sends a message from the beginning of the queue.
 void pd_session::do_write() {
-    DBG("do_write");
 	auto self(shared_from_this());
 	boost::asio::async_write(socket_,
 			boost::asio::buffer(write_msgs_.front().data(),
@@ -144,7 +143,6 @@ void pd_session::do_write() {
             [this, self](boost::system::error_code ec, std::size_t /*len*/)
             {
 				if (!ec) {
-                    DBG("write_msgs_.size() = %ld", write_msgs_.size());
                     write_msgs_.pop_front();
 					if (!write_msgs_.empty()) {
 						do_write();
@@ -188,10 +186,10 @@ bool pd_session::check_login() {
 // Parses received message
 void pd_session::parse_message() {
     DBG("read_msg_: %s [size=%ld]", read_msg_.str().c_str(), read_msg_.body_length());
-    // split message (like: aaa|bbb|ccc) to vector v
+    // split message ( like: aaa|bbb|ccc ) to vector v
 	std::vector<std::string> v = split_string(read_msg_.str(), "|");
     if (v.size() < 1) {
-        DBG("NEW: data incomplete!");
+        DBG("data incomplete!");
         return;
     }
 
@@ -212,7 +210,7 @@ void pd_session::parse_message() {
 					return 0;
 				}, this, &err_str);
 		if (err_str)
-            DBG("ALL: %s\n", err_str);
+            DBG("ALL: sqlite error: %s\n", err_str);
 		db.close();
 	}
     else if (v[0] == "LAST") { // get last event from database
@@ -232,7 +230,7 @@ void pd_session::parse_message() {
 					return 0;
 				}, this, &err_str);
 		if (err_str)
-            DBG("LAST: %s\n", err_str);
+            DBG("LAST: sqlite error: %s\n", err_str);
 		db.close();
 	}
     else if (v[0] == "NEW") { // add new event to database
@@ -251,7 +249,7 @@ void pd_session::parse_message() {
         db.exec(buf, nullptr, nullptr, &err_str);
 		db.close();
 		if (err_str) {
-            DBG("NEW: %s\n", err_str);
+            DBG("NEW: sqlite error: %s\n", err_str);
 			return;
 		}
         // send message to all users about new event
@@ -341,8 +339,8 @@ int main(int argc, char* argv[]) {
 					<< desc << std::endl;
 			return 0;
 		}
-		po::notify(vm); // throws on error, so do after help in case
-						// there are any problems
+        po::notify(vm); // throws on error, so do after help in case
+                        // there are any problems
 
         // --debug,-d  option: enables printing debug info
 		if (vm.count("debug")) {

@@ -58,7 +58,7 @@ void ConnectDialog::load_config()
     DBG("Read config file...");
     const char* home = getenv ("HOME");
     if(home == nullptr) return;
-    std::string fpath = home + std::string("/.pd_client");
+    std::string fpath = home + std::string("/.qpd_client");
     if (!boost::filesystem::exists(fpath.c_str())) return;
     std::ifstream file(fpath.c_str());
     if (!file.is_open()) return;
@@ -86,7 +86,7 @@ void ConnectDialog::save_config()
     DBG("Save config file...");
     const char* home = getenv ("HOME");
     if(home == nullptr) return;
-    std::string fpath = home + std::string("/.pd_client");
+    std::string fpath = home + std::string("/.qpd_client");
     std::ofstream file(fpath.c_str());
     if (!file.is_open()) return;
     file << "address=" << ui->EAddress->text().toStdString() << std::endl;

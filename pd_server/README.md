@@ -6,6 +6,7 @@ As a database, sqlite was used as a simple, single-file and good database for ga
 
 Configuration
 -------------
+The default server TCP port is 11111, but can be changed by setting it in the command line argument.
 The database consists of only one 'events' table.
 This table has three fields:
     timestamp - INTEGER PRIMARY KEY
@@ -27,6 +28,8 @@ There must be no spaces or tabs in each line.
 
 The program is installed in the /opt/pd_server directory, to which only the root user has access, and only root can boot the server.
 It is a security requirement that only root has access to the database and file that stores user data.
+After installing in the /opt/pd_server directory, the program must be run with root user privileges so that it has the ability to save files in this directory.
+If pd_server is to be run by another user, pay attention to the permissions to write files in the directory.
 Of course, you can put it in any directory if you need it.
 
 

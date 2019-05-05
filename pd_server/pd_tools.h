@@ -26,7 +26,8 @@
 extern bool pd_debug_info;
 
 /// \brief Special macro for debugging
-#define DBG(fmt, ...) std::printf("DBG [%s:%d: %s] " fmt "\n", \
+#define DBG(fmt, ...) \
+    if(pd_debug_info) std::printf("DBG [%s:%d: %s] " fmt "\n", \
     __FILE__, __LINE__, __FUNCTION__, ##__VA_ARGS__)
 
 /// \brief Encryption of the string with the AES ECB 128 algorithm.

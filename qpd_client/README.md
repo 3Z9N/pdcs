@@ -4,6 +4,9 @@ qpd_client is the client program for connecting to the pd_server with the Graphi
 It is an example of using the pd_client library.
 The Qt library was used to build the GUI of the program.
 
+Information about the connection is stored in the .qpd_client file in the home directory.
+
+
 Command Line Arguments
 ----------------------
 <pre>
