@@ -70,7 +70,10 @@ Command Line Arguments
 
 Building
 --------
-To build a pd_server run:   ./build_script
+<pre>
+To build a pd_server run:
+./build_script
+</pre>
 
 
 Installing
@@ -82,7 +85,8 @@ make install
 
 To uninstall run as root:
 make uninstall
-<pre>
+</pre>
+
 
 Author
 ------
