@@ -39,6 +39,7 @@ To build a pd_client library run:
 Installing
 ----------
 The program can be installed only after the project has been built.
+The default installation directory is /usr/local/lib - for library and /usr/local/include/pd_client - for header files.
 <pre>
 To install run as root:
 make install

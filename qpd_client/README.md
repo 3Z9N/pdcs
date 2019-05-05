@@ -25,6 +25,7 @@ To build a qpd_client run:
 Installing
 ----------
 The program can be installed only after the project has been built.
+The default installation directory is /usr/local/bin.
 <pre>
 To install run as root:
 make install
