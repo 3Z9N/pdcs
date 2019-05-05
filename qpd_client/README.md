@@ -25,11 +25,13 @@ To build a qpd_client run:
 Installing
 ----------
 The program can be installed only after the project has been built.
+<pre>
+To install run as root:
+make install
 
-To install run as root:   make install
-
-To uninstall run as root:   make uninstall
-
+To uninstall run as root:
+make uninstall
+</pre>
 
 Author
 ------
